@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Контроллер для получения сумм отпускных выплат для сотрудников")
 public interface HolidayPayController {
+
     @Operation(description = "получение суммы отпускных выплат для сотрудника")
     @ApiResponses(value = {
             @ApiResponse(
@@ -24,6 +25,6 @@ public interface HolidayPayController {
                     }
             )
     })
-    HolidayPayResponse getHolidayPayDto(HolidayPayRequest request);
+    HolidayPayResponse getHolidayPay(HolidayPayRequest request);
 
 }

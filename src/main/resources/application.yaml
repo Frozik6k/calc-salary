@@ -1,3 +1,16 @@
 spring:
   application:
-    name: demo
+    name: salaryCalculation
+
+tax:
+  ndfl:
+    taxBands:
+      - from: 0
+        to: 2000000
+        percent: 13
+      - from: 2000000
+        to: 10000000
+        percent: 15
+      - from: 10000000
+        to: null
+        percent: 20
