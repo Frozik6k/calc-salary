@@ -7,5 +7,5 @@ import java.math.BigDecimal;
 @Data
 public class HolidayPayRequest {
     private BigDecimal avarageSalaryMonth12;
-    private short vacationDays;
+    private BigDecimal vacationDays;
 }

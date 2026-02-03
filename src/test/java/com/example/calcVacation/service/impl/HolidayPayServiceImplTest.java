@@ -1,39 +1,30 @@
 package com.example.calcVacation.service.impl;
 
+import com.example.salaryCalculation.Application;
 import com.example.salaryCalculation.dto.HolidayPayRequest;
-import com.example.salaryCalculation.service.NdflService;
-import com.example.salaryCalculation.service.impl.HolidayPayServiceImpl;
+import com.example.salaryCalculation.service.HolidayPayService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = Application.class)
 class HolidayPayServiceImplTest {
 
-    @Mock
-    private NdflService ndflService;
-
-    @InjectMocks
-    private HolidayPayServiceImpl holidayPayService;
+    @Autowired
+    private HolidayPayService holidayPayService;
 
     @Test
-    void returnsIncomeWhenTaxIsHigherThanIncome() {
+    void testGetHolidayPay() {
         HolidayPayRequest request = new HolidayPayRequest();
-        request.setAvarageSalaryMonth12(new BigDecimal("36530"));
-        request.setVacationDays((short) 10);
-
-        when(ndflService.calculate(any(BigDecimal.class))).thenReturn(new BigDecimal("130.00"));
+        request.setAvarageSalaryMonth12(new BigDecimal("950000.00"));
+        request.setVacationDays(new BigDecimal("10"));
 
         assertThat(holidayPayService.getHolidayPay(request).getPay())
-                .isEqualByComparingTo(new BigDecimal("870.00"));
+                .isEqualByComparingTo(new BigDecimal("27019.30"));
     }
 
 }
