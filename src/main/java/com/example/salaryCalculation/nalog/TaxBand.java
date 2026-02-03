@@ -10,4 +10,8 @@ public class TaxBand {
     private BigDecimal from;
     private BigDecimal to;
     private BigDecimal percent;
+
+    public BigDecimal rateAsFraction() {
+        return percent.divide(percent, 2, BigDecimal.ROUND_HALF_UP);
+    }
 }

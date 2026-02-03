@@ -18,9 +18,13 @@ public class NdflServiceImpl implements NdflService {
     public BigDecimal calculate(BigDecimal income) {
         BigDecimal tax = BigDecimal.ZERO;
 
-        for (TaxBand taxBand : ndflProperties.getTaxBands()) {
-            //TODO посчитать ндфл
-        }
-        return null;
+        return ndflProperties.getTaxBands()
+                .stream()
+                .map(taxBand -> {
+                    BigDecimal upper = (taxBand.getTo() == null ? income : income.min(taxBand.getTo()));
+                    BigDecimal part = upper.subtract(taxBand.getFrom()).max(BigDecimal.ZERO);
+                    return part.multiply(taxBand.rateAsFraction());
+                })
+                .collect(() -> BigDecimal.ZERO, BigDecimal::add, BigDecimal::add);
     }
 }
