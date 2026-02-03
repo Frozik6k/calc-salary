@@ -1,6 +1,5 @@
 package com.example.salaryCalculation.nalog;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,6 +11,6 @@ public class TaxBand {
     private BigDecimal percent;
 
     public BigDecimal rateAsFraction() {
-        return percent.divide(percent, 2, BigDecimal.ROUND_HALF_UP);
+        return percent.divide(BigDecimal.valueOf(100), 2, BigDecimal.ROUND_HALF_UP);
     }
 }

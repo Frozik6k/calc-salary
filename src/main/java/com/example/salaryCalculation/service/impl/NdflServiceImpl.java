@@ -16,8 +16,6 @@ public class NdflServiceImpl implements NdflService {
 
     @Override
     public BigDecimal calculate(BigDecimal income) {
-        BigDecimal tax = BigDecimal.ZERO;
-
         return ndflProperties.getTaxBands()
                 .stream()
                 .map(taxBand -> {
@@ -25,6 +23,7 @@ public class NdflServiceImpl implements NdflService {
                     BigDecimal part = upper.subtract(taxBand.getFrom()).max(BigDecimal.ZERO);
                     return part.multiply(taxBand.rateAsFraction());
                 })
-                .collect(() -> BigDecimal.ZERO, BigDecimal::add, BigDecimal::add);
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
     }
 }
