@@ -25,6 +25,5 @@ public interface LeavePayController {
                     }
             )
     })
-    LeavePayResponse getHolidayPay(LeavePayRequest request);
-
+    LeavePayResponse getLeavePay(LeavePayRequest request);
 }

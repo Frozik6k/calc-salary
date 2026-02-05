@@ -45,8 +45,8 @@ public class HolidayCalendar2026ServiceImpl implements HolidayCalendarService {
 
     @Override
     public short countHolidays(LocalDate startDate, LocalDate endDate) {
-        if (startDate.getDayOfYear() != 2026) {
-            log.warn("Выбран не верный праздничный календарь за 2026. В параметрах указан год " + startDate.getDayOfYear() );
+        if (startDate.getYear() != 2026) {
+            log.warn("Выбран не верный праздничный календарь за 2026. В параметрах указан год " + startDate.getDayOfYear());
             throw new IllegalArgumentException("Выбран не актульный календарь");
         }
         long days = ChronoUnit.DAYS.between(startDate, endDate) + 1;

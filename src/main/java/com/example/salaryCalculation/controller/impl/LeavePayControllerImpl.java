@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/salary/holiday-pay")
+@RequestMapping("/salary/leave-pay")
 public class LeavePayControllerImpl implements LeavePayController {
 
-    private final LeavePayService holidayPayService;
+    private final LeavePayService leavePayService;
 
     @Override
     @GetMapping("/calculacte")
-    public LeavePayResponse getHolidayPay(@RequestBody LeavePayRequest request) {
-        return holidayPayService.getHolidayPay(request);
+    public LeavePayResponse getLeavePay(@RequestBody LeavePayRequest request) {
+        return leavePayService.getLeavePay(request);
     }
 }
