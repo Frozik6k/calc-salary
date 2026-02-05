@@ -3,9 +3,11 @@ package com.example.salaryCalculation.dto;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
-public class HolidayPayRequest {
+public class LeavePayRequest {
     private BigDecimal avarageSalaryMonth12;
-    private BigDecimal vacationDays;
+    private short vacationDays;
+    private LocalDate vacationStart;
 }

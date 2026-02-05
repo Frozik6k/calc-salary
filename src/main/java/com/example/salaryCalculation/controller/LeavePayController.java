@@ -1,7 +1,7 @@
 package com.example.salaryCalculation.controller;
 
-import com.example.salaryCalculation.dto.HolidayPayRequest;
-import com.example.salaryCalculation.dto.HolidayPayResponse;
+import com.example.salaryCalculation.dto.LeavePayRequest;
+import com.example.salaryCalculation.dto.LeavePayResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Контроллер для получения сумм отпускных выплат для сотрудников")
-public interface HolidayPayController {
+public interface LeavePayController {
 
     @Operation(description = "получение суммы отпускных выплат для сотрудника")
     @ApiResponses(value = {
@@ -20,11 +20,11 @@ public interface HolidayPayController {
                     content = {
                             @Content(
                                     mediaType = "application/json",
-                                    schema = @Schema(implementation = HolidayPayResponse.class)
+                                    schema = @Schema(implementation = LeavePayResponse.class)
                             )
                     }
             )
     })
-    HolidayPayResponse getHolidayPay(HolidayPayRequest request);
+    LeavePayResponse getHolidayPay(LeavePayRequest request);
 
 }

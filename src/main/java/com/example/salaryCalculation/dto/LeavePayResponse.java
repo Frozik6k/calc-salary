@@ -7,6 +7,6 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
-public class HolidayPayResponse {
+public class LeavePayResponse {
     private BigDecimal pay;
 }
